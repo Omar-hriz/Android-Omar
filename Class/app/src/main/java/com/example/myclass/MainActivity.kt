@@ -40,6 +40,19 @@ class MainActivity : AppCompatActivity() {
         for (personne in PeopleTaille) {
             Log.d("Taille", personne.Nom)
         }
+        for (i in 0 until  PeopleAlpha.size - 1) {
+            var PlaceHolder = PeopleTaille[0]
+            for (j in i until PeopleAlpha.size -1) {
+                if (Compart(PeopleAlpha[j].Nom,PeopleAlpha[i].Nom)) {
+                    PlaceHolder = PeopleAlpha[j]
+                    PeopleAlpha[j] = PeopleAlpha[i]
+                    PeopleAlpha[i] = PlaceHolder
+                }
+            }
+        }
+        for (personne in PeopleAlpha) {
+            Log.d("Alpha", personne.Nom)
+        }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -55,10 +68,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
     fun Compart(a:String ,b:String):Boolean{
-        val cond = true
+        val cond = false
         for(i in 0 until minOf(a.length, b.length) -1) {
             if (a[i].compareTo(b[i]) == 0) {
-                val cond = false
+                val cond = true
                 break
             }
         }
