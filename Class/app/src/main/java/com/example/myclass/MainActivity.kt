@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         for (i in 0 until  PeopleAlpha.size - 1) {
             var PlaceHolder = PeopleTaille[0]
             for (j in i until PeopleAlpha.size -1) {
-                if (Compart(PeopleAlpha[j].Nom,PeopleAlpha[i].Nom)) {
+                if (Compart(PeopleAlpha[i].Nom,PeopleAlpha[j].Nom)) {
                     PlaceHolder = PeopleAlpha[j]
                     PeopleAlpha[j] = PeopleAlpha[i]
                     PeopleAlpha[i] = PlaceHolder
