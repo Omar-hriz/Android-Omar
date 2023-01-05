@@ -23,6 +23,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclersample.addFlower.AddFlowerActivity
 import com.example.recyclersample.flowerDetail.FlowerDetailActivity
@@ -30,6 +31,7 @@ import com.example.recyclersample.R
 import com.example.recyclersample.addFlower.FLOWER_DESCRIPTION
 import com.example.recyclersample.addFlower.FLOWER_NAME
 import com.example.recyclersample.data.Flower
+import kotlinx.android.synthetic.main.activity_main.*
 
 const val FLOWER_ID = "flower id"
 
@@ -48,9 +50,12 @@ class FlowersListActivity : AppCompatActivity() {
         val headerAdapter = HeaderAdapter()
         val flowersAdapter = FlowersAdapter { flower -> adapterOnClick(flower) }
         val concatAdapter = ConcatAdapter(headerAdapter, flowersAdapter)
+        val Glayout = GridLayoutManager(this, 2)
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
         recyclerView.adapter = concatAdapter
+
+        recyclerView.setLayoutManager(Glayout)
 
         flowersListViewModel.flowersLiveData.observe(this, {
             it?.let {
